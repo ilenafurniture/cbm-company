@@ -1,0 +1,424 @@
+.container {
+    max-width: 1000px;
+    width: 80%;
+}
+.container1 {
+    max-width: 1300px;
+    width: calc(100% - 4em);
+    margin-inline: auto;
+}
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+}
+
+h1 {
+    font-size: 50px;
+    line-height: 58px;
+    font-weight: bold;
+}
+h2 {
+    font-size: 30px;
+    line-height: 34px;
+    font-weight: bold;
+}
+h3 {
+    font-size: 20px;
+    line-height: 27px;
+    font-weight: 600;
+}
+p {
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.header-home {
+    height: 90svh;
+    width: 100%;
+    max-height: 800px;
+
+    .item-slide {
+        display: block;
+        background-color: white;
+        height: 7px;
+        width: 7px;
+        border-radius: 3em;
+        border: 2px solid var(--gelap);
+        cursor: pointer;
+        transition: 0.2s;
+        outline: 1px solid rgba(255, 255, 255, 0);
+
+        &:hover {
+            transition: 0.2s;
+            border: 2px solid white;
+            outline: 1px solid white;
+        }
+
+        &.active {
+            transition: 0.2s;
+            outline: 1px solid rgba(255, 255, 255, 0.7);
+        }
+    }
+
+    .content {
+        height: 90svh;
+        max-height: 800px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        z-index: 1;
+
+        .judul {
+            font-size: 40px;
+            line-height: 50px;
+            font-weight: 500;
+            max-width: 600px;
+            text-align: center;
+        }
+        .sub-judul {
+            font-size: 15px;
+            line-height: 30px;
+            max-width: 600px;
+            text-align: center;
+            color: rgb(209, 209, 209);
+        }
+    }
+    .gambar {
+        height: 90svh;
+        max-height: 800px;
+        width: 100%;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 1em 2.5em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.2s;
+
+    &:hover {
+        gap: 2em;
+        transition: 0.2s;
+    }
+
+    &.lonjong {
+        border-radius: 3em;
+    }
+    &.putih {
+        background-color: white;
+        color: var(--gelap);
+        transition: 0.2s;
+
+        &:hover {
+            background-color: var(--gelap);
+            color: white;
+            transition: 0.2s;
+        }
+    }
+    &.terang {
+        background-color: var(--terang);
+        color: white;
+        transition: 0.2s;
+
+        &:hover {
+            background-color: var(--gelap);
+            transition: 0.2s;
+        }
+    }
+    &.outline-putih {
+        color: white;
+        border: 1px solid white;
+        transition: 0.2s;
+
+        &:hover {
+            background-color: white;
+            color: var(--gelap);
+            transition: 0.2s;
+        }
+    }
+}
+
+nav {
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    color: white;
+
+    .atas {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        width: 100%;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        font-size: 10px;
+        font-weight: 200;
+    }
+    .bawah {
+        position: sticky;
+        top: 0;
+
+        img {
+            height: 20px;
+        }
+
+        .icons {
+            display: flex;
+            flex: 1;
+            justify-content: end;
+
+            a {
+                padding: 1.2em 1em;
+                font-size: 12px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0);
+                transition: 0.3s;
+                font-weight: 500;
+
+                &:hover {
+                    border-bottom: 1px solid white;
+                    transition: 0.3s;
+                }
+            }
+        }
+    }
+}
+
+.container-slide-artikel {
+    display: flex;
+    height: fit-content;
+
+    .item {
+        aspect-ratio: 3 / 4;
+        flex: 1;
+        height: 100%;
+        position: relative;
+
+        .content {
+            border-radius: 1em;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .judul {
+                font-weight: bold;
+                font-size: 30px;
+            }
+            @media (max-width: 1200px) {
+                .judul {
+                    font-size: 25px;
+                }
+            }
+            @media (max-width: 1000px) {
+                .judul {
+                    font-size: 20px;
+                }
+            }
+            @media (max-width: 850px) {
+                .judul {
+                    font-size: 15px;
+                }
+            }
+
+            .deskripsi {
+                font-size: 10px;
+                opacity: 0.8;
+            }
+            a {
+                padding-block: 5px;
+                display: flex;
+                gap: 1em;
+                border-bottom: 1px solid rgba(0, 0, 0, 0);
+                width: fit-content;
+                font-size: 13px;
+                transition: 0.3s;
+                &:hover {
+                    border-bottom: 1px solid white;
+                    transition: 0.3s;
+                }
+            }
+        }
+
+        .gambar {
+            height: 100%;
+            width: 100%;
+            border-radius: 1em;
+
+            img {
+                border-radius: 1em;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+hr {
+    &.terang {
+        border-top: 1px solid var(--terang);
+    }
+    &.gelap {
+        border-top: 1px solid var(--gelap);
+    }
+    &.putih {
+        border-top: 1px solid white;
+    }
+}
+
+.container-negara {
+    width: 100%;
+    height: 70svh;
+    max-height: 500px;
+    position: relative;
+
+    .content {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 5;
+        background-color: #1d212e83;
+
+        .anak-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+            .isi {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 6;
+
+                .anak-isi {
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    position: relative;
+
+                    .item {
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        scale: 1;
+                        opacity: 0;
+                        transition: 0.8s;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        &.active {
+                            scale: 1.2;
+                            opacity: 1;
+                            transition: 0.8s;
+                        }
+                    }
+                }
+            }
+
+            .slider {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 7;
+                display: flex;
+                align-items: end;
+                justify-content: center;
+
+                span {
+                    cursor: pointer;
+                    display: block;
+                    height: 7px;
+                    width: 20px;
+                    border-radius: 3em;
+                    background-color: rgba(255, 255, 255, 0.151);
+                    transition: 0.3s;
+                    &:hover {
+                        background-color: white;
+                        transition: 0.3s;
+                    }
+                    &.active {
+                        background-color: white;
+                        width: 80px;
+                    }
+                }
+            }
+
+            .background {
+                background-image: linear-gradient(
+                    to bottom,
+                    var(--gelap),
+                    transparent
+                );
+                width: 100%;
+                height: 50%;
+            }
+        }
+    }
+
+    .gambar {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+
+        img {
+            position: absolute;
+            z-index: 4;
+            height: 100%;
+            width: 100%;
+            scale: 1;
+            opacity: 0;
+            object-fit: cover;
+            transition: 1s;
+
+            &.active {
+                scale: 1.2;
+                opacity: 1;
+                transition: 1s;
+            }
+        }
+    }
+}
+
+footer {
+    width: 100%;
+    display: flex;
+
+    .content {
+        width: 100%;
+    }
+
+    a {
+        display: block;
+        font-size: 12px;
+        color: var(--biru);
+        text-wrap: nowrap;
+    }
+
+    img {
+        height: 30px;
+    }
+}
