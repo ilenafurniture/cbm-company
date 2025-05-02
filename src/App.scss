@@ -203,10 +203,10 @@ p {
 }
 
 nav {
-    position: absolute;
     width: 100%;
     z-index: 99;
     color: white;
+    transition: 0.2s;
 
     .atas {
         border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -218,9 +218,6 @@ nav {
         font-weight: 200;
     }
     .bawah {
-        position: sticky;
-        top: 0;
-
         img {
             height: 20px;
         }
@@ -242,6 +239,24 @@ nav {
                     transition: 0.3s;
                 }
             }
+        }
+    }
+
+    &.transparent {
+        opacity: 1;
+        transition: 0.2s;
+        &.hide {
+            opacity: 0;
+            transition: 0.2s;
+        }
+    }
+    &.gelap {
+        background-color: var(--gelap);
+        opacity: 0;
+        transition: 0.2s;
+        &.show {
+            opacity: 1;
+            transition: 0.2s;
         }
     }
 }
@@ -493,6 +508,52 @@ footer {
 
         &.bggelap {
             border-color: rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+.float-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    background-color: var(--gelap1);
+    color: var(--gelap);
+    z-index: 6;
+    padding: 0.3em;
+    border-radius: 3em;
+    transition: 0.2s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    button,
+    a {
+        width: 50px;
+        height: 50px;
+        border-radius: 3em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        transition: 0.2s;
+        cursor: pointer;
+        overflow: hidden;
+
+        &.expand {
+            width: 0px;
+            height: 0px;
+        }
+
+        &:hover {
+            background-color: var(--gelap);
+            transition: 0.2s;
+        }
+    }
+    &:hover {
+        .expand {
+            width: 50px;
+            height: 50px;
         }
     }
 }
