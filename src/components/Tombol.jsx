@@ -1,17 +1,33 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Tombol = ({
     to = "",
     teks = "isi woi",
     varian = "lonjong putih",
+    varianText = "",
     icon = "",
     style = {},
+    styleText = {},
+    type = "button",
 }) => {
+    const navigator = useNavigate(to);
+    const handleClick = () => {
+        if (type == "button" && to != "") {
+            navigator(to);
+        }
+    };
     return (
-        <Link to={to} className={`btn ${varian}`} style={style}>
-            <p>{teks}</p>
+        <button
+            type={type}
+            onClick={handleClick}
+            className={`btn ${varian}`}
+            style={style}
+        >
+            <p style={styleText} className={varianText}>
+                {teks}
+            </p>
             {icon}
-        </Link>
+        </button>
     );
 };
 

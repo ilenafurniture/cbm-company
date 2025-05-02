@@ -41,16 +41,7 @@ const Footer = () => {
                                     <FaPhoneVolume />
                                 </h3>
                                 <div style={{ flex: 1 }}>
-                                    <h3>+62 24 76630912</h3>
-                                    <p
-                                        className="text-terang"
-                                        style={{
-                                            fontWeight: 500,
-                                            marginTop: "-3px",
-                                        }}
-                                    >
-                                        Isi mei
-                                    </p>
+                                    <h3>+62 813 2602 5685</h3>
                                 </div>
                                 <div className="flex gap-2 items-center">
                                     <Link to={"/"}>

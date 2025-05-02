@@ -7,6 +7,9 @@ import { RiSchoolLine } from "react-icons/ri";
 import { PiBuildingOffice } from "react-icons/pi";
 import { FiUsers } from "react-icons/fi";
 import { useEffect, useRef, useState } from "react";
+import { MdImagesearchRoller } from "react-icons/md";
+import { SiHomeassistant } from "react-icons/si";
+import { TbBuildingBridge2 } from "react-icons/tb";
 
 const artikelItems = [
     {
@@ -120,16 +123,12 @@ const Home = () => {
             <div className="header-home">
                 <div className="content">
                     <div className="flex flex-col items-center">
-                        <p className="judul mb-4">
-                            Isi mei isi mei isi mei isi mei isi mei isi mei isi
-                            mei
-                        </p>
-                        <p className="sub-judul mb-5">
-                            Isi mei isi mei isi mei
-                        </p>
+                        <p className="judul m-0">Karya Asli, Kualitas Pasti</p>
+                        <p className="sub-judul mb-10">Catur Bhakti Mandiri</p>
                         <Tombol
                             to={"/about"}
-                            teks="ISI MEI"
+                            teks="NEWS RELEASE"
+                            varian={"lonjong outline-putih"}
                             icon={<FaArrowRight />}
                         />
                         <div className="flex gap-2 mt-7">
@@ -141,7 +140,7 @@ const Home = () => {
                 </div>
                 <div className="gambar">
                     <img
-                        src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        src="https://images.unsplash.com/photo-1547895749-888a559fc2a7?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         alt=""
                     />
                 </div>
@@ -184,7 +183,7 @@ const Home = () => {
                     <div className="flex justify-end">
                         <Tombol
                             to={"/about"}
-                            teks="ISI MEI"
+                            teks="Selengkapnya"
                             varian="lonjong outline-putih"
                             style={{ width: "fit-content" }}
                             icon={<FaArrowRight />}
@@ -227,11 +226,15 @@ const Home = () => {
                     >
                         Product Furniture
                     </p>
-                    <h2 style={{ maxWidth: "500px" }} className="mb-3">
-                        Isi mei Lorem, ipsum dolo t consectetur adipisicing r
+                    <h2 style={{ maxWidth: "600px" }} className="mb-3">
+                        Berbagai jenis furniture kami produksi untuk memenuhi
+                        kebutuhan Anda
                     </h2>
                     <div className="flex gap-5 mt-10 mb-5">
-                        <div className="flex flex-col items-center gap-3 px-5">
+                        <div
+                            className="flex flex-col items-center gap-3 px-5"
+                            style={{ flex: 1 }}
+                        >
                             <div
                                 className="bg-gelap flex justify-center items-center"
                                 style={{
@@ -246,15 +249,16 @@ const Home = () => {
                                 className="text-center"
                                 style={{ fontWeight: "bold" }}
                             >
-                                Rumah Tangga
+                                Residential
                             </p>
                             <p className="text-center text-biru">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Magni excepturi laborum optio
-                                fuga alias consequatur.
+                                rumah tangga, apartement, home studio. etc
                             </p>
                         </div>
-                        <div className="flex flex-col items-center gap-3 px-5">
+                        <div
+                            className="flex flex-col items-center gap-3 px-5"
+                            style={{ flex: 1 }}
+                        >
                             <div
                                 className="bg-gelap flex justify-center items-center"
                                 style={{
@@ -269,15 +273,16 @@ const Home = () => {
                                 className="text-center"
                                 style={{ fontWeight: "bold" }}
                             >
-                                Kantor
+                                Commercial
                             </p>
                             <p className="text-center text-biru">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Magni excepturi laborum optio
-                                fuga alias consequatur.
+                                perhotelan, sekolah, perkantoran, etc
                             </p>
                         </div>
-                        <div className="flex flex-col items-center gap-3 px-5">
+                        <div
+                            className="flex flex-col items-center gap-3 px-5"
+                            style={{ flex: 1 }}
+                        >
                             <div
                                 className="bg-gelap flex justify-center items-center"
                                 style={{
@@ -286,18 +291,16 @@ const Home = () => {
                                     borderRadius: "200px",
                                 }}
                             >
-                                <RiSchoolLine size={40} />
+                                <TbBuildingBridge2 size={40} />
                             </div>
                             <p
                                 className="text-center"
                                 style={{ fontWeight: "bold" }}
                             >
-                                Sekolah
+                                Anymore
                             </p>
                             <p className="text-center text-biru">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Magni excepturi laborum optio
-                                fuga alias consequatur.
+                                update inovasi produk furniture
                             </p>
                         </div>
                     </div>
@@ -326,13 +329,12 @@ const Home = () => {
                                 className="text-terang mb-1"
                                 style={{ fontWeight: "bold" }}
                             >
-                                Out Journey
+                                FSC Certificate
                             </p>
                             <h3>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. Unde placeat et qui nostrum
-                                esse voluptate quaerat officiis impedit debitis
-                                animi?
+                                Berkomitmen untuk menjaga ekosistem bumi dengan
+                                hanya memilih bahan yang berasal dari hutan
+                                berkelanjutan.
                             </h3>
                         </div>
                     </div>
@@ -590,7 +592,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="py-10 bg-gelap1">
+            <div className="bg-gelap1" style={{ paddingBlock: "5vw" }}>
                 <div className="container mx-auto py-5">
                     <div className="flex justify-between items-end mb-6">
                         <hr

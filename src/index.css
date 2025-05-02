@@ -9,6 +9,7 @@
 :root {
     --terang: #d9a049;
     --terang1: #e2b87a;
+    --terang2: #57390d;
     --gelap: #1d212e;
     --gelap1: #363d53;
     --biru: #9ca4be;
@@ -37,4 +38,7 @@
 }
 .bg-biru {
     background-color: var(--biru);
+}
+.text-terang2 {
+    color: var(--terang2);
 }

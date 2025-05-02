@@ -21,7 +21,7 @@ const Navbar = () => {
                         </div>
                         <div className="flex gap-2 items-center">
                             <FaBlenderPhone />
-                            <p>Call in : +62-24-76630912</p>
+                            <p>Call in : +62 813 2602 5685</p>
                         </div>
                     </div>
                 </div>
@@ -30,9 +30,8 @@ const Navbar = () => {
                 <div className="container gap-7 mx-auto flex items-center">
                     <div className="flex gap-3 items-center">
                         <img src="/img/logo cbm white.png" alt="" />
-                        <p>CV. Catur Bhakti Mandiri</p>
                     </div>
-                    <div className="icons">
+                    <div className="icons gap-4">
                         <Link to={"/"}>HOME</Link>
                         <Link to={"/brand"}>BRANDS</Link>
                         <Link to={"/about"}>ABOUT</Link>
