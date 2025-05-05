@@ -123,10 +123,13 @@ const Home = () => {
             <div className="header-home">
                 <div className="content">
                     <div className="flex flex-col items-center">
-                        <p className="judul m-0">Karya Asli, Kualitas Pasti</p>
+                        <p className="judul m-0">
+                            Karya Asli, {window.innerWidth <= 700 && <br />}
+                            Kualitas Pasti
+                        </p>
                         <p className="sub-judul mb-10">Catur Bhakti Mandiri</p>
                         <Tombol
-                            to={"/about"}
+                            to={"/article"}
                             teks="NEWS RELEASE"
                             varian={"lonjong outline-putih"}
                             icon={<FaArrowRight />}
@@ -157,7 +160,9 @@ const Home = () => {
                     </p>
                     <div
                         className="flex items-center mb-6"
-                        style={{ gap: "3em" }}
+                        style={{
+                            gap: window.innerWidth <= 700 ? "1.5em" : "3em",
+                        }}
                     >
                         <div>
                             <p>Bersama</p>
@@ -180,7 +185,13 @@ const Home = () => {
                             kebutuhan konsumen.
                         </p>
                     </div>
-                    <div className="flex justify-end">
+                    <div
+                        className={`flex ${
+                            window.innerWidth <= 700
+                                ? "justify-start"
+                                : "justify-end"
+                        }`}
+                    >
                         <Tombol
                             to={"/about"}
                             teks="Selengkapnya"
@@ -192,7 +203,7 @@ const Home = () => {
                 </div>
             </div>
             <div className="bg-gelap" style={{ paddingBottom: "5vw" }}>
-                <div className="container1">
+                <div className={window.innerWidth > 700 ? "container1" : ""}>
                     <div className="container-slide-artikel gap-3">
                         {artikelItems.map((a, ind_a) => (
                             <div key={ind_a} className="item">
@@ -230,78 +241,123 @@ const Home = () => {
                         Berbagai jenis furniture kami produksi untuk memenuhi
                         kebutuhan Anda
                     </h2>
-                    <div className="flex gap-5 mt-10 mb-5">
+                    <div className="baris-ke-kolom gap-5 mt-10 mb-5">
                         <div
-                            className="flex flex-col items-center gap-3 px-5"
+                            className="kolom-ke-baris items-center gap-3 px-5"
                             style={{ flex: 1 }}
                         >
                             <div
-                                className="bg-gelap flex justify-center items-center"
+                                className="bg-gelap"
                                 style={{
-                                    width: "70px",
-                                    height: "70px",
                                     borderRadius: "200px",
                                 }}
                             >
-                                <IoHomeOutline size={40} />
+                                <div
+                                    className="flex justify-center items-center"
+                                    style={{ width: "70px", height: "70px" }}
+                                >
+                                    <IoHomeOutline size={40} />
+                                </div>
                             </div>
-                            <p
-                                className="text-center"
-                                style={{ fontWeight: "bold" }}
-                            >
-                                Residential
-                            </p>
-                            <p className="text-center text-biru">
-                                rumah tangga, apartement, home studio. etc
-                            </p>
+                            <div>
+                                <p
+                                    className={
+                                        window.innerWidth > 700
+                                            ? "text-center"
+                                            : ""
+                                    }
+                                    style={{ fontWeight: "bold" }}
+                                >
+                                    Residential
+                                </p>
+                                <p
+                                    className={`text-biru ${
+                                        window.innerWidth > 700
+                                            ? "text-center"
+                                            : ""
+                                    }`}
+                                >
+                                    rumah tangga, apartement, home studio. etc
+                                </p>
+                            </div>
                         </div>
                         <div
-                            className="flex flex-col items-center gap-3 px-5"
+                            className="kolom-ke-baris items-center gap-3 px-5"
                             style={{ flex: 1 }}
                         >
                             <div
-                                className="bg-gelap flex justify-center items-center"
+                                className="bg-gelap"
                                 style={{
-                                    width: "70px",
-                                    height: "70px",
                                     borderRadius: "200px",
                                 }}
                             >
-                                <HiOutlineOfficeBuilding size={40} />
+                                <div
+                                    className="flex justify-center items-center"
+                                    style={{ width: "70px", height: "70px" }}
+                                >
+                                    <HiOutlineOfficeBuilding size={40} />
+                                </div>
                             </div>
-                            <p
-                                className="text-center"
-                                style={{ fontWeight: "bold" }}
-                            >
-                                Commercial
-                            </p>
-                            <p className="text-center text-biru">
-                                perhotelan, sekolah, perkantoran, etc
-                            </p>
+                            <div>
+                                <p
+                                    className={
+                                        window.innerWidth > 700
+                                            ? "text-center"
+                                            : ""
+                                    }
+                                    style={{ fontWeight: "bold" }}
+                                >
+                                    Commercial
+                                </p>
+                                <p
+                                    className={`text-biru ${
+                                        window.innerWidth > 700
+                                            ? "text-center"
+                                            : ""
+                                    }`}
+                                >
+                                    perhotelan, sekolah, perkantoran, etc
+                                </p>
+                            </div>
                         </div>
                         <div
-                            className="flex flex-col items-center gap-3 px-5"
+                            className="kolom-ke-baris items-center gap-3 px-5"
                             style={{ flex: 1 }}
                         >
                             <div
-                                className="bg-gelap flex justify-center items-center"
+                                className="bg-gelap"
                                 style={{
-                                    width: "70px",
-                                    height: "70px",
                                     borderRadius: "200px",
                                 }}
                             >
-                                <TbBuildingBridge2 size={40} />
+                                <div
+                                    className="flex justify-center items-center"
+                                    style={{ width: "70px", height: "70px" }}
+                                >
+                                    <TbBuildingBridge2 size={40} />
+                                </div>
                             </div>
-                            <p
-                                className="text-center"
-                                style={{ fontWeight: "bold" }}
-                            >
-                                Anymore
-                            </p>
-                            <p className="text-center text-biru">
-                                update inovasi produk furniture
-                            </p>
+                            <div>
+                                <p
+                                    className={
+                                        window.innerWidth > 700
+                                            ? "text-center"
+                                            : ""
+                                    }
+                                    style={{ fontWeight: "bold" }}
+                                >
+                                    Anymore
+                                </p>
+                                <p
+                                    className={`text-biru ${
+                                        window.innerWidth > 700
+                                            ? "text-center"
+                                            : ""
+                                    }`}
+                                >
+                                    update inovasi produk furniture
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -320,7 +376,7 @@ const Home = () => {
                         <div
                             className="bg-gelap"
                             style={{
-                                width: "55%",
+                                width: window.innerWidth > 700 ? "55%" : "90%",
                                 borderRadius: "1em 1em 0 1em",
                                 padding: "2em 3em",
                             }}
@@ -342,8 +398,10 @@ const Home = () => {
                         <div
                             className="bg-gelap flex"
                             style={{
-                                width: "65%",
-                                borderRadius: "0em 1em 1em 1em",
+                                borderRadius:
+                                    window.innerWidth > 700
+                                        ? "0 1em 1em 1em"
+                                        : "0em 1em 1em 0em",
                                 overflow: "hidden",
                             }}
                         >
@@ -377,34 +435,39 @@ const Home = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                style={{
-                                    flex: 1,
-                                    position: "relative",
-                                    aspectRatio: "1 / 1",
-                                    maxHeight: "300px",
-                                }}
-                                className="bg-red-500"
-                            >
-                                <img
+                            {window.innerWidth > 700 && (
+                                <div
                                     style={{
-                                        position: "absolute",
-                                        height: "100%",
-                                        width: "100%",
-                                        objectFit: "cover",
+                                        flex: 1,
+                                        position: "relative",
+                                        aspectRatio: "1 / 1",
+                                        maxHeight: "300px",
                                     }}
-                                    src="https://images.unsplash.com/photo-1534268611302-70c57b990514?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    alt=""
-                                />
-                            </div>
+                                    className="bg-red-500"
+                                >
+                                    <img
+                                        style={{
+                                            position: "absolute",
+                                            height: "100%",
+                                            width: "100%",
+                                            objectFit: "cover",
+                                        }}
+                                        src="https://images.unsplash.com/photo-1534268611302-70c57b990514?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        alt=""
+                                    />
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="w-full">
                         <div
                             className="bg-gelap flex flex-col justify-between"
                             style={{
-                                width: "35%",
-                                borderRadius: "1em",
+                                width: window.innerWidth > 700 ? "35%" : "70%",
+                                borderRadius:
+                                    window.innerWidth > 700
+                                        ? "1em"
+                                        : "1em 0 1em 1em",
                                 padding: "2em 3em",
                                 aspectRatio: "1 / 1",
                                 maxHeight: "300px",
@@ -485,7 +548,10 @@ const Home = () => {
                                                 Country
                                             </p>
                                             <h1
-                                                style={{ maxWidth: "500px" }}
+                                                style={{
+                                                    maxWidth: "500px",
+                                                    width: "80%",
+                                                }}
                                                 className="text-white text-center"
                                             >
                                                 {n.nama}
@@ -522,8 +588,15 @@ const Home = () => {
             >
                 <div className="container1 py-5">
                     <div
-                        className="py-10 px-7"
-                        style={{ border: "1px solid var(--gelap1)" }}
+                        className={
+                            window.innerWidth > 700 ? "py-10 px-7" : "py-0 px-0"
+                        }
+                        style={{
+                            border:
+                                window.innerWidth > 700
+                                    ? "1px solid var(--gelap1)"
+                                    : "",
+                        }}
                     >
                         <h2 className="text-center mb-2">Our Partner</h2>
                         <p className="text-center mb-6">
@@ -612,17 +685,45 @@ const Home = () => {
                             <h1 className="text-white text-center">Clients</h1>
                         </div>
                     </div>
-                    <div className="flex items-center" style={{ gap: "4em" }}>
-                        <div style={{ flex: 1 }}>
+                    <div
+                        className="flex items-center px-7 hidden-scrollbar"
+                        style={{
+                            gap: window.innerWidth > 700 ? "4em" : "2em",
+                            overflowX:
+                                window.innerWidth > 700 ? "auto" : "scroll",
+                            scrollSnapType: "x mandatory",
+                        }}
+                    >
+                        <div
+                            style={{
+                                flex: window.innerWidth > 700 ? "1" : "0 0 60%",
+                                scrollSnapAlign: "center",
+                            }}
+                        >
                             <img src="/img/crate barrel.png" alt="" />
                         </div>
-                        <div style={{ flex: 1 }}>
+                        <div
+                            style={{
+                                flex: window.innerWidth > 700 ? "1" : "0 0 60%",
+                                scrollSnapAlign: "center",
+                            }}
+                        >
                             <img src="/img/the land of nod.png" alt="" />
                         </div>
-                        <div style={{ flex: 1 }}>
+                        <div
+                            style={{
+                                flex: window.innerWidth > 700 ? "1" : "0 0 60%",
+                                scrollSnapAlign: "center",
+                            }}
+                        >
                             <img src="/img/west elm.png" alt="" />
                         </div>
-                        <div>
+                        <div
+                            style={{
+                                flex: window.innerWidth > 700 ? "1" : "0 0 60%",
+                                scrollSnapAlign: "center",
+                            }}
+                        >
                             <img
                                 style={{ height: "30px" }}
                                 src="/img/william.png"

@@ -8,11 +8,13 @@ import {
 } from "react-icons/md";
 import { TiSocialFacebook } from "react-icons/ti";
 import { Link } from "react-router-dom";
-import { IoSearch } from "react-icons/io5";
+import { IoClose, IoSearch } from "react-icons/io5";
 import { useEffect, useState } from "react";
+import { CgMenu } from "react-icons/cg";
 
 const Navbar = () => {
     const [scrollY, setScrollY] = useState(0);
+    const [menu, setMenu] = useState(false);
     useEffect(() => {
         const handleScroll = () => {
             setScrollY(window.scrollY);
@@ -22,6 +24,11 @@ const Navbar = () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
+
+    useEffect(() => {
+        console.log("menu");
+        console.log(menu);
+    }, [menu]);
 
     return (
         <>
@@ -42,18 +49,72 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className="bawah">
-                    <div className="container gap-7 mx-auto flex items-center">
+                    <div className="container gap-7 mx-auto flex items-center justify-between">
                         <div className="flex gap-3 items-center">
                             <img src="/img/logo cbm white.png" alt="" />
+                            <p style={{ fontWeight: "bold", fontSize: "15px" }}>
+                                CV. CBM
+                            </p>
                         </div>
-                        <div className="icons gap-4">
+                        <div className={`icons gap-4 ${menu ? "show" : ""}`}>
+                            {window.innerWidth <= 700 && (
+                                <>
+                                    <div
+                                        style={{ flex: 1, width: "100%" }}
+                                        className="flex justify-end items-start"
+                                    >
+                                        <button
+                                            onClick={() => {
+                                                setMenu(false);
+                                            }}
+                                            className="text-biru"
+                                        >
+                                            <IoClose size={30} />
+                                        </button>
+                                    </div>
+                                    <div className="flex gap-3 items-center mb-2">
+                                        <img
+                                            src="/img/logo cbm white.png"
+                                            alt=""
+                                        />
+                                        <p
+                                            style={{
+                                                fontWeight: "bold",
+                                                fontSize: "15px",
+                                            }}
+                                        >
+                                            CV. CBM
+                                        </p>
+                                    </div>
+                                    <hr
+                                        style={{
+                                            width: "100%",
+                                            borderTop: "1px solid white",
+                                        }}
+                                    />
+                                </>
+                            )}
                             <Link to={"/"}>HOME</Link>
                             <Link to={"/brand"}>BRANDS</Link>
                             <Link to={"/about"}>ABOUT</Link>
+                            {window.innerWidth <= 700 && (
+                                <div style={{ flex: 1 }}></div>
+                            )}
                         </div>
-                        <div className="flex gap-3">
-                            <IoSearch />
-                        </div>
+                        {window.innerWidth <= 700 ? (
+                            <div
+                                className=""
+                                onClick={() => {
+                                    setMenu(true);
+                                }}
+                            >
+                                <CgMenu size={20} />
+                            </div>
+                        ) : (
+                            <div className="flex gap-3">
+                                <IoSearch />
+                            </div>
+                        )}
                     </div>
                 </div>
             </nav>
@@ -62,18 +123,72 @@ const Navbar = () => {
                 style={{ position: "fixed" }}
             >
                 <div className="bawah">
-                    <div className="container gap-7 mx-auto flex items-center">
+                    <div className="container gap-7 mx-auto flex items-center justify-between">
                         <div className="flex gap-3 items-center">
                             <img src="/img/logo cbm white.png" alt="" />
+                            <p style={{ fontWeight: "bold", fontSize: "15px" }}>
+                                CV. CBM
+                            </p>
                         </div>
-                        <div className="icons gap-4">
+                        <div className={`icons gap-4 ${menu ? "show" : ""}`}>
+                            {window.innerWidth <= 700 && (
+                                <>
+                                    <div
+                                        style={{ flex: 1, width: "100%" }}
+                                        className="flex justify-end items-start"
+                                    >
+                                        <button
+                                            onClick={() => {
+                                                setMenu(false);
+                                            }}
+                                            className="text-biru"
+                                        >
+                                            <IoClose size={30} />
+                                        </button>
+                                    </div>
+                                    <div className="flex gap-3 items-center mb-2">
+                                        <img
+                                            src="/img/logo cbm white.png"
+                                            alt=""
+                                        />
+                                        <p
+                                            style={{
+                                                fontWeight: "bold",
+                                                fontSize: "15px",
+                                            }}
+                                        >
+                                            CV. CBM
+                                        </p>
+                                    </div>
+                                    <hr
+                                        style={{
+                                            width: "100%",
+                                            borderTop: "1px solid white",
+                                        }}
+                                    />
+                                </>
+                            )}
                             <Link to={"/"}>HOME</Link>
                             <Link to={"/brand"}>BRANDS</Link>
                             <Link to={"/about"}>ABOUT</Link>
+                            {window.innerWidth <= 700 && (
+                                <div style={{ flex: 1 }}></div>
+                            )}
                         </div>
-                        <div className="flex gap-3">
-                            <IoSearch />
-                        </div>
+                        {window.innerWidth <= 700 ? (
+                            <div
+                                className=""
+                                onClick={() => {
+                                    setMenu(true);
+                                }}
+                            >
+                                <CgMenu size={20} />
+                            </div>
+                        ) : (
+                            <div className="flex gap-3">
+                                <IoSearch />
+                            </div>
+                        )}
                     </div>
                 </div>
             </nav>

@@ -63,7 +63,7 @@ const About = () => {
                 </div>
                 <div className="container1 bg-terang">
                     <div
-                        className="container mx-auto flex gap-5"
+                        className="container mx-auto baris-ke-kolom gap-5"
                         style={{ paddingBlock: "5vw" }}
                     >
                         <div style={{ flex: 4 }}>
@@ -146,12 +146,12 @@ const About = () => {
                                         Semarang, Jawa Tengah, Indonesia.
                                     </p>
                                 </div>
-                                <div className="flex gap-3 text-terang2">
+                                {/* <div className="flex gap-3 text-terang2">
                                     <h5>
                                         <FaPhoneVolume />
                                     </h5>
                                     <p>+62 813 2602 5685</p>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

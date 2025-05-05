@@ -1,6 +1,7 @@
 import { BiLogoGmail } from "react-icons/bi";
 import { CgFacebook } from "react-icons/cg";
 import { FaInstagram, FaPhoneVolume } from "react-icons/fa";
+import { MdOutlineEmail } from "react-icons/md";
 import { TiSocialTwitter } from "react-icons/ti";
 import { Link } from "react-router-dom";
 
@@ -11,8 +12,8 @@ const Footer = () => {
                 <div className="atas"></div>
                 <div className="bawah py-10">
                     <div
-                        className="container mx-auto flex py-5"
-                        style={{ gap: "4em" }}
+                        className="container mx-auto baris-ke-kolom py-5"
+                        style={{ gap: window.innerWidth > 700 ? "4em" : "1em" }}
                     >
                         <div>
                             <div className="flex gap-5">
@@ -36,46 +37,61 @@ const Footer = () => {
                                 className="putih my-5"
                                 style={{ opacity: 0.2 }}
                             />
-                            <div className="flex gap-3 items-center">
-                                <h3>
-                                    <FaPhoneVolume />
-                                </h3>
-                                <div style={{ flex: 1 }}>
-                                    <h3>+62 813 2602 5685</h3>
+                            <div
+                                className={`baris-ke-kolom ${
+                                    window.innerWidth > 700 ? "gap-3" : "gap-1"
+                                } items-center justify-between`}
+                            >
+                                <div className="flex gap-3 items-center">
+                                    <h3>
+                                        <FaPhoneVolume />
+                                    </h3>
+                                    <div style={{ flex: 1 }}>
+                                        <h3>+62 813 2602 5685</h3>
+                                    </div>
                                 </div>
                                 <div className="flex gap-2 items-center">
                                     <Link to={"/"}>
-                                        <CgFacebook size={15} />
-                                    </Link>
-                                    <Link to={"/"}>
-                                        <TiSocialTwitter size={15} />
-                                    </Link>
-                                    <Link to={"/"}>
-                                        <FaInstagram size={15} />
-                                    </Link>
-                                    <Link to={"/"}>
-                                        <BiLogoGmail size={15} />
+                                        <div className="flex gap-2 items-center">
+                                            <MdOutlineEmail />
+                                            <p>Email : cbmandiri87@yahoo.com</p>
+                                        </div>
                                     </Link>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <h5 className="font-bold mb-3">Menu</h5>
-                            <div className="flex flex-col gap-1">
-                                <Link to={"/"}>Home</Link>
-                                <Link to={"/brands"}>Brands</Link>
-                                <Link to={"/about"}>About</Link>
+                        <div
+                            className="flex gap-10"
+                            style={{
+                                width: window.innerWidth > 700 ? "auto" : "80%",
+                            }}
+                        >
+                            <div
+                                style={
+                                    window.innerWidth <= 700 ? { flex: 1 } : {}
+                                }
+                            >
+                                <h5 className="font-bold mb-3">Menu</h5>
+                                <div className="kolom-ke-baris gap-1">
+                                    <Link to={"/"}>Home</Link>
+                                    <Link to={"/brands"}>Brands</Link>
+                                    <Link to={"/about"}>About</Link>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <h5 className="font-bold mb-3">Projects</h5>
-                            <div className="flex flex-col gap-1">
-                                <Link to={"https://lunareafurniture.com/"}>
-                                    Lunarea
-                                </Link>
-                                <Link to={"https://ilenafurniture.com/"}>
-                                    Ilena
-                                </Link>
+                            <div
+                                style={
+                                    window.innerWidth <= 700 ? { flex: 1 } : {}
+                                }
+                            >
+                                <h5 className="font-bold mb-3">Projects</h5>
+                                <div className="kolom-ke-baris gap-1">
+                                    <Link to={"https://lunareafurniture.com/"}>
+                                        Lunarea
+                                    </Link>
+                                    <Link to={"https://ilenafurniture.com/"}>
+                                        Ilena
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
