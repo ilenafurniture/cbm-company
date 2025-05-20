@@ -1,6 +1,6 @@
 import { FaArrowRight, FaPlus } from "react-icons/fa";
 import Tombol from "../components/Tombol";
-import { Link } from "react-router-dom";
+import { data, Link } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { RiSchoolLine } from "react-icons/ri";
@@ -85,6 +85,15 @@ const Home = () => {
                 }));
             });
         }, 5000);
+
+        (async () => {
+            const fetchArticle = await fetch(
+                `${import.meta.env.VITE_BACKEND_URL}/article`
+            );
+            const dataArticle = await fetchArticle.json();
+            console.log(dataArticle);
+        })();
+
         return () => clearInterval(intervalRef.current);
     }, []);
 
@@ -277,7 +286,7 @@ const Home = () => {
                                             : ""
                                     }`}
                                 >
-                                    rumah tangga, apartement, home studio. etc
+                                    Rumah tangga, apartement, home studio. etc
                                 </p>
                             </div>
                         </div>
@@ -316,7 +325,7 @@ const Home = () => {
                                             : ""
                                     }`}
                                 >
-                                    perhotelan, sekolah, perkantoran, etc
+                                    Perhotelan, sekolah, perkantoran, etc
                                 </p>
                             </div>
                         </div>
@@ -355,7 +364,7 @@ const Home = () => {
                                             : ""
                                     }`}
                                 >
-                                    update inovasi produk furniture
+                                    Update inovasi produk furniture
                                 </p>
                             </div>
                         </div>
@@ -403,6 +412,7 @@ const Home = () => {
                                         ? "0 1em 1em 1em"
                                         : "0em 1em 1em 0em",
                                 overflow: "hidden",
+                                width: "65%",
                             }}
                         >
                             <div
