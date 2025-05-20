@@ -23,6 +23,6 @@ sequelize.sync().then(() => {
     console.log("Database synced");
 });
 
-app.listen(4001, () => {
+app.listen(8082, () => {
     console.log(`Server running on ${process.env.BASE_URL}`);
 });
