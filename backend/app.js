@@ -11,13 +11,13 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
     res.status(200).json({ message: "API CBM Company" });
 });
-app.use("/user", userRoutes);
-app.use("/article", articleRoutes);
-app.use("/tag", tagRoutes);
-app.use("/image", imageRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/article", articleRoutes);
+app.use("/api/tag", tagRoutes);
+app.use("/api/image", imageRoutes);
 
 sequelize.sync().then(() => {
     console.log("Database synced");
