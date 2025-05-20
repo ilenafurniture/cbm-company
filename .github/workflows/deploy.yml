@@ -1,33 +1,39 @@
 name: Deploy CBM Frontend and Backend to VPS
 
 on:
-  push:
-    branches:
-      - main # atau branch yang kamu pakai buat production
+    push:
+        branches:
+            - main # atau branch yang kamu pakai buat production
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+    deploy:
+        runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    
-    - name: Install SSH Key
-      uses: webfactory/ssh-agent@v0.7.0
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-    
-    - name: Deploy to VPS
-      run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} << 'EOF'
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-          cd /mine/caturbhaktimandiri.com
-          git pull
-          pm2 restart api_cbm
-          cd frontend
-          npm run build
-        EOF
+            - name: Install SSH Key
+              uses: webfactory/ssh-agent@v0.7.0
+              with:
+                  ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+            - name: Deploy to VPS
+              run: |
+                  ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} << 'EOF'
+                    export NVM_DIR="$HOME/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+                    cd /mine/caturbhaktimandiri.com
+                    git pull
+                    pm2 restart api_cbm
+                    cd frontend
+                    npm run build
+                    echo "RewriteEngine On
+                    RewriteBase /
+                    RewriteRule ^index\.html$ - [L]
+                    RewriteCond %{REQUEST_FILENAME} !-f
+                    RewriteCond %{REQUEST_FILENAME} !-d
+                    RewriteRule . /index.html [L]" > dist/.htaccess
+                  EOF
