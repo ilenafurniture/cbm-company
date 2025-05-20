@@ -49,6 +49,9 @@ const read = async (req, res) => {
         const articleAll = await Article.findAll({
             where: filter,
         });
+        console.log("=====================");
+        console.log(articleAll);
+        console.log("=====================");
         res.status(200).json({
             data: article.map((a) => {
                 const tagsArticleArr = JSON.parse(JSON.parse(a.dataValues.tag));
