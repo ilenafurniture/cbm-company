@@ -90,9 +90,7 @@ const Home = () => {
             const fetchArticle = await fetch(
                 `${import.meta.env.VITE_BACKEND_URL}/article`
             );
-            console.log(fetchArticle);
             const dataArticle = await fetchArticle.json();
-            console.log(dataArticle);
         })();
 
         return () => clearInterval(intervalRef.current);
