@@ -47,7 +47,7 @@ const AdminNavbar = () => {
                     className={`item ${checkActivePath("article")}`}
                 >
                     <MdFastfood />
-                    <p>Products</p>
+                    <p>Articles</p>
                 </Link>
             </div>
             <hr className="my-6" />

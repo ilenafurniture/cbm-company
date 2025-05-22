@@ -40,7 +40,7 @@ const Article = () => {
         <>
             <div className="header-article-list">
                 <div className="content">
-                    <div className="flex justify-between items-end">
+                    <div className="baris-ke-kolom justify-between items-end">
                         <p className="judul">Our Releases</p>
                         <div>
                             <h3>Inspiration</h3>
@@ -52,13 +52,20 @@ const Article = () => {
                 </div>
             </div>
             <div className="flex w-full">
-                <div style={{ width: "50px" }} className="bg-terang"></div>
                 <div
-                    style={{ flex: 1, paddingInline: "50px" }}
+                    style={{ width: window.innerWidth < 700 ? "20px" : "50px" }}
+                    className="bg-terang"
+                ></div>
+                <div
+                    style={{
+                        flex: 1,
+                        paddingInline:
+                            window.innerWidth < 700 ? "20px" : "50px",
+                    }}
                     className="bg-white"
                 >
                     <div
-                        style={{ marginTop: "-50px" }}
+                        style={{ marginTop: "-50px", marginBottom: "30px" }}
                         className="container-article"
                     >
                         {article
@@ -82,8 +89,13 @@ const Article = () => {
                                                   <p>{item.deskripsi}</p>
                                               </div>
                                           </div>
-                                          {/* <div style={{ flex: 1 }}></div> */}
-                                          <p className="mt-3 text-gray-500">
+                                          <p
+                                              className={`mt-${
+                                                  window.innerWidth > 700
+                                                      ? "3"
+                                                      : "1"
+                                              } text-gray-500`}
+                                          >
                                               {formatReadableDate(
                                                   item.updatedAt
                                               )}
@@ -94,7 +106,9 @@ const Article = () => {
                             : "Loading ..."}
                     </div>
                 </div>
-                <div style={{ width: "50px" }}></div>
+                <div
+                    style={{ width: window.innerWidth < 700 ? "20px" : "50px" }}
+                ></div>
             </div>
         </>
     );

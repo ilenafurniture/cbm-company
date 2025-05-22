@@ -7,7 +7,7 @@ import {
     MdOutlinePhone,
 } from "react-icons/md";
 import { TiSocialFacebook, TiUserOutline } from "react-icons/ti";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoClose, IoSearch } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { CgMenu } from "react-icons/cg";
@@ -24,6 +24,8 @@ const Navbar = () => {
     const navigate = useNavigate();
     const [modalLogin, setModalLogin] = useState(false);
     const { token, setUser } = useUserStore();
+    const location = useLocation();
+    const path = location.pathname.split("/")[1];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -36,6 +38,7 @@ const Navbar = () => {
     }, []);
 
     useEffect(() => {
+        console.log("path", path);
         setFormLogin({ email: "", password: "" });
         setMessage("");
     }, [modalLogin]);
@@ -91,8 +94,7 @@ const Navbar = () => {
                         style={{
                             maxWidth: "700px",
                             width: "80%",
-                            height: "70%",
-                            minHeight: "500px",
+                            height: "500px",
                         }}
                     >
                         {window.innerWidth > 700 && (
@@ -184,27 +186,33 @@ const Navbar = () => {
                 style={{ position: "absolute" }}
                 className={`transparent ${scrollY > 50 ? "hide" : ""}`}
             >
-                <div className="atas">
-                    <div className="container mx-auto flex justify-between">
-                        <div className="flex gap-2 items-center">
-                            <MdOutlineEmail />
-                            <p>Email : cbmandiri87@yahoo.com</p>
-                        </div>
-                        <div className="flex gap-2 items-center">
-                            <FaBlenderPhone />
-                            <p>Call in : +62 813 2602 5685</p>
+                {path != "article" && (
+                    <div className="atas">
+                        <div className="container mx-auto flex justify-between">
+                            <div className="flex gap-2 items-center">
+                                <MdOutlineEmail />
+                                <p>Email : cbmandiri87@yahoo.com</p>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                                <FaBlenderPhone />
+                                <p>Call in : +62 813 2602 5685</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                )}
                 <div className="bawah">
                     <div className="container gap-7 mx-auto flex items-center justify-between">
                         <div className="flex gap-3 items-center">
-                            <img src="/img/logo cbm white.png" alt="" />
+                            <img src={`/img/logo cbm white.png`} alt="" />
                             <p style={{ fontWeight: "bold", fontSize: "15px" }}>
                                 CV. CBM
                             </p>
                         </div>
-                        <div className={`icons gap-4 ${menu ? "show" : ""}`}>
+                        <div
+                            className={`icons ${
+                                path == "article" ? "right" : ""
+                            } gap-4 ${menu ? "show" : ""}`}
+                        >
                             {window.innerWidth <= 700 && (
                                 <>
                                     <div
@@ -242,9 +250,30 @@ const Navbar = () => {
                                     />
                                 </>
                             )}
-                            <Link to={"/"}>HOME</Link>
-                            <Link to={"/brand"}>BRANDS</Link>
-                            <Link to={"/article"}>ARTICLES</Link>
+                            <Link
+                                to={"/"}
+                                onClick={() => {
+                                    setMenu(false);
+                                }}
+                            >
+                                HOME
+                            </Link>
+                            <Link
+                                to={"/brand"}
+                                onClick={() => {
+                                    setMenu(false);
+                                }}
+                            >
+                                BRANDS
+                            </Link>
+                            <Link
+                                to={"/article"}
+                                onClick={() => {
+                                    setMenu(false);
+                                }}
+                            >
+                                ARTICLES
+                            </Link>
                             {window.innerWidth <= 700 && (
                                 <div style={{ flex: 1 }}></div>
                             )}
@@ -326,9 +355,30 @@ const Navbar = () => {
                                     />
                                 </>
                             )}
-                            <Link to={"/"}>HOME</Link>
-                            <Link to={"/brand"}>BRANDS</Link>
-                            <Link to={"/article"}>ARTICLE</Link>
+                            <Link
+                                to={"/"}
+                                onClick={() => {
+                                    setMenu(false);
+                                }}
+                            >
+                                HOME
+                            </Link>
+                            <Link
+                                to={"/brand"}
+                                onClick={() => {
+                                    setMenu(false);
+                                }}
+                            >
+                                BRANDS
+                            </Link>
+                            <Link
+                                to={"/article"}
+                                onClick={() => {
+                                    setMenu(false);
+                                }}
+                            >
+                                ARTICLE
+                            </Link>
                             {window.innerWidth <= 700 && (
                                 <div style={{ flex: 1 }}></div>
                             )}

@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import AppAdmin from "./AppAdmin.jsx";
 import AdminArticleDetail from "./pages/AdminArticleDetail.jsx";
 import Article from "./pages/Article.jsx";
+import ArticleDetail from "./pages/ArticleDetail.jsx";
 
 createRoot(document.getElementById("root")).render(
     <BrowserRouter>
@@ -18,7 +19,7 @@ createRoot(document.getElementById("root")).render(
                 <Route path="about" element={<About />} />
                 <Route path="article">
                     <Route index element={<Article />} />
-                    <Route path=":path" element={<AdminArticleDetail />} />
+                    <Route path=":path" element={<ArticleDetail />} />
                 </Route>
             </Route>
             <Route

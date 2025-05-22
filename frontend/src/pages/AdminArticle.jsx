@@ -68,11 +68,9 @@ const AdminArticle = () => {
             setTimeout(() => {
                 setAlert({
                     ...alert,
-                    teks,
+                    teks: "",
                 });
             }, 200);
-            console.log("berhasil hapus");
-            console.log(articleJson);
             if (responseFetch.status == 200) {
                 setArticles({
                     ...articles,

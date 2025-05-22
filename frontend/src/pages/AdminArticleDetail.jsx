@@ -222,7 +222,7 @@ const AdminArticleDetail = () => {
                                     ></textarea>
                                 </div>
                                 <div className="formulir mb-2">
-                                    <label>Kategpri</label>
+                                    <label>Kategori</label>
                                     <select
                                         value={formData.kategori}
                                         onChange={(e) => {
