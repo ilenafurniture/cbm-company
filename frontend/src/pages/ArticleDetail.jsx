@@ -122,8 +122,7 @@ const ArticleDetail = () => {
                             {pisahJudul(article?.judul).judul1}
                         </h5>
                         <h2 className="text-white mb-1">
-                            {pisahJudul(article?.judul).judul2} Lorem ipsum
-                            dolor sit amet.
+                            {pisahJudul(article?.judul).judul2}
                         </h2>
                     </div>
                 </div>
@@ -146,10 +145,7 @@ const ArticleDetail = () => {
                     }`}
                 >
                     <div style={{ flex: 7 }}>
-                        <h5>
-                            {article?.deskripsi} Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Ut, quo.
-                        </h5>
+                        <h5>{article?.deskripsi}</h5>
                     </div>
                     <div
                         style={{ flex: 3 }}
