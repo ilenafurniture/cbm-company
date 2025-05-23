@@ -41,7 +41,8 @@ h3 {
         line-height: 18px;
     }
 }
-p {
+p,
+li {
     font-weight: 300;
     font-size: 12px;
     letter-spacing: 1px;
@@ -1202,5 +1203,26 @@ footer {
         position: relative;
         z-index: 2;
         display: flex;
+    }
+}
+
+.container-isi-article {
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    ul {
+        margin-bottom: 1em;
+    }
+    a {
+        color: var(--terang);
+    }
+    ul {
+        list-style-type: circle;
+        list-style-position: outside;
+        // background-color: aqua;
+        padding-left: 1.6em;
     }
 }

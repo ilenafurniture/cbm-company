@@ -215,7 +215,7 @@ const AdminArticle = () => {
                                                 <div className="flex">
                                                     <Link
                                                         className="btn"
-                                                        to={`/articel/${p.path}`}
+                                                        to={`/article/${p.path}`}
                                                     >
                                                         <IoMdOpen />
                                                     </Link>

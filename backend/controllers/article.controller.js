@@ -166,7 +166,7 @@ const create = async (req, res) => {
             ...req.body,
             tag: JSON.stringify(tags),
             path: req.body.judul
-                .replace(/[^a-zA-Z ]/g, "")
+                .replace(/[^a-zA-Z0-9 ]/g, "")
                 .replaceAll(" ", "-")
                 .toLowerCase(),
             gambar: req.file.filename,
@@ -223,7 +223,7 @@ const update = async (req, res) => {
             ...req.body,
             tag: JSON.stringify(tags),
             path: req.body.judul
-                .replace(/[^a-zA-Z ]/g, "")
+                .replace(/[^a-zA-Z0-9 ]/g, "")
                 .replaceAll(" ", "-")
                 .toLowerCase(),
         };

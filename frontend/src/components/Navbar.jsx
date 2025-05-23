@@ -23,7 +23,7 @@ const Navbar = () => {
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
     const [modalLogin, setModalLogin] = useState(false);
-    const { token, setUser } = useUserStore();
+    const { token, setUser, role } = useUserStore();
     const location = useLocation();
     const path = location.pathname.split("/")[1];
 
@@ -295,7 +295,11 @@ const Navbar = () => {
                                 <div
                                     className="btn icon"
                                     onClick={() => {
-                                        setModalLogin(true);
+                                        if (role == "admin") {
+                                            navigate("/admin/article");
+                                        } else {
+                                            setModalLogin(true);
+                                        }
                                     }}
                                 >
                                     <TiUserOutline />
@@ -400,7 +404,11 @@ const Navbar = () => {
                                 <div
                                     className="btn icon"
                                     onClick={() => {
-                                        setModalLogin(true);
+                                        if (role == "admin") {
+                                            navigate("/admin/article");
+                                        } else {
+                                            setModalLogin(true);
+                                        }
                                     }}
                                 >
                                     <TiUserOutline />

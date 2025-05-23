@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { AiOutlineEdit } from "react-icons/ai";
+import useUserStore from "../../store/userStore";
 
 const ArticleDetail = () => {
     const { path } = useParams();
     const [article, setArticle] = useState(null);
+    const { role } = useUserStore();
     useEffect(() => {
         (async () => {
             const fetchArticle = await fetch(
@@ -125,6 +128,17 @@ const ArticleDetail = () => {
                     </div>
                 </div>
             </div>
+            {role == "admin" && (
+                <div className="container mx-auto pt-10">
+                    <Link
+                        to={`/admin/article/edit/${article?.id}`}
+                        className="btn lonjong terang justify-center"
+                    >
+                        <p>Edit</p>
+                        <AiOutlineEdit />
+                    </Link>
+                </div>
+            )}
             <div className={window.innerWidth > 700 ? "py-10" : "py-8"}>
                 <div
                     className={`container mx-auto baris-ke-kolom-reverse gap-${
@@ -172,7 +186,7 @@ const ArticleDetail = () => {
                     <hr className="terang" />
                 </div>
                 <div
-                    className="container mx-auto"
+                    className="container mx-auto container-isi-article"
                     dangerouslySetInnerHTML={{ __html: article?.isi }}
                 ></div>
                 <div className="container mx-auto mt-5">
