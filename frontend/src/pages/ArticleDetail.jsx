@@ -185,7 +185,10 @@ const ArticleDetail = () => {
                     className="container mx-auto container-isi-article"
                     dangerouslySetInnerHTML={{ __html: article?.isi }}
                 ></div>
-                <div className="container mx-auto mt-5">
+                <div
+                    className="container mx-auto mt-5 flex"
+                    style={{ flexWrap: "wrap", columnGap: "1em" }}
+                >
                     {article?.tag.map((t, ind_t) => (
                         <p
                             className="text-terang"
