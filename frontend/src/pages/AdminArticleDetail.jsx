@@ -8,7 +8,7 @@ import useMessageStore from "../../store/messageStore";
 import useUserStore from "../../store/userStore";
 import { Editor } from "@tinymce/tinymce-react";
 
-const categoriesItem = ["Tips & trick", "Olahraga"];
+const categoriesItem = ["Rekomendasi", "Tips & Trik", "Edukasi", "Fun Fact"];
 
 const AdminArticleDetail = () => {
     const editorRef = useRef(null);
