@@ -598,7 +598,9 @@ const Home = () => {
                 <div className="container1 py-5">
                     <div
                         className={
-                            window.innerWidth > 700 ? "py-10 px-7" : "py-0 px-0"
+                            window.innerWidth > 700
+                                ? "pb-10 pt-7 px-7"
+                                : "py-0 px-0"
                         }
                         style={{
                             border:
@@ -607,12 +609,13 @@ const Home = () => {
                                     : "",
                         }}
                     >
-                        <h2 className="text-center mb-2">Our Partner</h2>
-                        <p className="text-center mb-6">
+                        <h2 className="text-center mb-5">Brands</h2>
+                        {/* <p className="text-center mb-6">
                             Lorem ipsum dolor sit, amet consectetur adipisicing.
-                        </p>
+                        </p> */}
                         <div className="flex gap-2">
-                            <div
+                            <Link
+                                to={"https://ilenafurniture.com"}
                                 style={{
                                     flex: 1,
                                     position: "relative",
@@ -640,8 +643,9 @@ const Home = () => {
                                     src="https://img.ilenafurniture.com/image/1742973197480.png/?apikey=a7eabf2178bad12d7d795c6fd4a2e935"
                                     alt=""
                                 />
-                            </div>
-                            <div
+                            </Link>
+                            <Link
+                                to={"https://lunareafurniture.com"}
                                 style={{
                                     flex: 1,
                                     position: "relative",
@@ -669,7 +673,7 @@ const Home = () => {
                                     src="https://img.ilenafurniture.com/image/1742972542166.png/?apikey=a7eabf2178bad12d7d795c6fd4a2e935"
                                     alt=""
                                 />
-                            </div>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -691,7 +695,7 @@ const Home = () => {
                             >
                                 Our
                             </h3>
-                            <h1 className="text-white text-center">Clients</h1>
+                            <h1 className="text-white text-center">Partners</h1>
                         </div>
                     </div>
                     <div
