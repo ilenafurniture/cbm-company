@@ -10,6 +10,7 @@ import AppAdmin from "./AppAdmin.jsx";
 import AdminArticleDetail from "./pages/AdminArticleDetail.jsx";
 import Article from "./pages/Article.jsx";
 import ArticleDetail from "./pages/ArticleDetail.jsx";
+import Brand from "./pages/Brand.jsx";
 
 createRoot(document.getElementById("root")).render(
     <BrowserRouter>
@@ -17,6 +18,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="/" element={<App />}>
                 <Route index element={<Home />} />
                 <Route path="about" element={<About />} />
+                <Route path="brand" element={<Brand />} />
                 <Route path="article">
                     <Route index element={<Article />} />
                     <Route path=":path" element={<ArticleDetail />} />

@@ -2,6 +2,7 @@ import { FaArrowRight, FaPhoneVolume } from "react-icons/fa";
 import Tombol from "../components/Tombol";
 import { useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
+import { Helmet } from "react-helmet";
 
 const About = () => {
     const [formKritik, setFormKritik] = useState({
@@ -15,6 +16,9 @@ const About = () => {
 
     return (
         <>
+            <Helmet>
+                <title>About | CV.CBM</title>
+            </Helmet>
             <div className="header-page">
                 <div className="content">
                     <div className="flex flex-col items-center">

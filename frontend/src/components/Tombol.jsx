@@ -9,25 +9,42 @@ const Tombol = ({
     style = {},
     styleText = {},
     type = "button",
+    target = "_self",
 }) => {
     const navigator = useNavigate(to);
     const handleClick = () => {
-        if (type == "button" && to != "") {
+        if (type == "button") {
             navigator(to);
         }
     };
     return (
-        <button
-            type={type}
-            onClick={handleClick}
-            className={`btn ${varian}`}
-            style={style}
-        >
-            <p style={styleText} className={varianText}>
-                {teks}
-            </p>
-            {icon}
-        </button>
+        <>
+            {to ? (
+                <Link
+                    target={target}
+                    to={to}
+                    className={`btn ${varian}`}
+                    style={style}
+                >
+                    <p style={styleText} className={varianText}>
+                        {teks}
+                    </p>
+                    {icon}
+                </Link>
+            ) : (
+                <button
+                    type={type}
+                    onClick={handleClick}
+                    className={`btn ${varian}`}
+                    style={style}
+                >
+                    <p style={styleText} className={varianText}>
+                        {teks}
+                    </p>
+                    {icon}
+                </button>
+            )}
+        </>
     );
 };
 

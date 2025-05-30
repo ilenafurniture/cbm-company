@@ -14,7 +14,7 @@ const AdminArticleDetail = () => {
     const editorRef = useRef(null);
     const [formData, setFormData] = useState({
         judul: "",
-        penulis: "",
+        penulis: "Mei Anggraini",
         kategori: categoriesItem[0],
         tag: [""],
         deskripsi: "",

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Article = () => {
     const [article, setArticle] = useState(null);
@@ -38,14 +39,17 @@ const Article = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Article | CV.CBM</title>
+            </Helmet>
             <div className="header-article-list">
                 <div className="content">
                     <div className="baris-ke-kolom justify-between items-end">
                         <p className="judul">Our Releases</p>
                         <div>
-                            <h3>Inspiration</h3>
+                            <h3>Inspirasi</h3>
                             <p style={{ maxWidth: "140px" }}>
-                                Lorem ipsum dolor sit.Lorem ipsum dolor sit.
+                                Kumpulan informasi terbaru dan seru
                             </p>
                         </div>
                     </div>
