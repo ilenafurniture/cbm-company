@@ -71,9 +71,6 @@ const Navbar = () => {
             navigate("/admin/article");
         })();
     };
-
-    const handleLogout = () => {};
-
     return (
         <>
             {modalLogin && (
@@ -202,12 +199,12 @@ const Navbar = () => {
                 )}
                 <div className="bawah">
                     <div className="container gap-7 mx-auto flex items-center justify-between">
-                        <div className="flex gap-3 items-center">
+                        <Link to={"/"} className="flex gap-3 items-center">
                             <img src={`/img/logo cbm white.png`} alt="" />
                             <p style={{ fontWeight: "bold", fontSize: "15px" }}>
                                 CV. CBM
                             </p>
-                        </div>
+                        </Link>
                         <div
                             className={`icons ${
                                 path == "article" ? "right" : ""
@@ -315,12 +312,12 @@ const Navbar = () => {
             >
                 <div className="bawah">
                     <div className="container gap-7 mx-auto flex items-center justify-between">
-                        <div className="flex gap-3 items-center">
+                        <Link to={"/"} className="flex gap-3 items-center">
                             <img src="/img/logo cbm white.png" alt="" />
                             <p style={{ fontWeight: "bold", fontSize: "15px" }}>
                                 CV. CBM
                             </p>
-                        </div>
+                        </Link>
                         <div className={`icons gap-4 ${menu ? "show" : ""}`}>
                             {window.innerWidth <= 700 && (
                                 <>

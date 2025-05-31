@@ -7,7 +7,7 @@ const path = require("path");
 
 const read = async (req, res) => {
     const path = req.params.path;
-    const { tag, kategori, q, pag = 1 } = req.query;
+    const { tag, kategori, q, pag = 1, limit } = req.query;
     try {
         const fetcthTags = await Tag.findAll();
         const tags = fetcthTags.map((t) => t.dataValues);
@@ -41,14 +41,23 @@ const read = async (req, res) => {
         if (kategori) {
             filter.kategori = kategori;
         }
-        const article = await Article.findAll({
-            where: filter,
-            limit: 20,
-            offset: (pag - 1) * 20,
-        });
-        const articleAll = await Article.findAll({
-            where: filter,
-        });
+        let article, articleAll;
+        if (limit) {
+            article = await Article.findAll({
+                where: filter,
+                limit: Number(limit),
+                order: [["createdAt", "DESC"]],
+            });
+        } else {
+            article = await Article.findAll({
+                where: filter,
+                limit: 20,
+                offset: (pag - 1) * 20,
+            });
+            articleAll = await Article.findAll({
+                where: filter,
+            });
+        }
         res.status(200).json({
             data: article.map((a) => {
                 const tagsArticleArr = JSON.parse(JSON.parse(a.dataValues.tag));
@@ -64,7 +73,7 @@ const read = async (req, res) => {
                     tag: tagsArticleView,
                 };
             }),
-            count: articleAll.length,
+            count: limit ? Number(limit) : articleAll.length,
         });
     } catch (err) {
         res.status(500).json({ error: err.message });

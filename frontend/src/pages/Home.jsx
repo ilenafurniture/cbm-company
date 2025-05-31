@@ -7,8 +7,6 @@ import { RiSchoolLine } from "react-icons/ri";
 import { PiBuildingOffice } from "react-icons/pi";
 import { FiUsers } from "react-icons/fi";
 import { useEffect, useRef, useState } from "react";
-import { MdImagesearchRoller, MdOutlineContactSupport } from "react-icons/md";
-import { SiHomeassistant } from "react-icons/si";
 import { TbBuildingBridge2 } from "react-icons/tb";
 
 const artikelItems = [
@@ -72,6 +70,7 @@ const Home = () => {
     ]);
     const intervalRef = useRef(null);
     const checkIntervalStop = useRef(false);
+    const [artikelItems, setArtikelItems] = useState([]);
 
     useEffect(() => {
         intervalRef.current = setInterval(() => {
@@ -86,15 +85,29 @@ const Home = () => {
             });
         }, 5000);
 
+        // (async () => {
+        //     const fetchArticle = await fetch(
+        //         `${import.meta.env.VITE_BACKEND_URL}/article`
+        //     );
+        //     const dataArticle = await fetchArticle.json();
+        // })();
+
         (async () => {
             const fetchArticle = await fetch(
-                `${import.meta.env.VITE_BACKEND_URL}/article`
+                `${import.meta.env.VITE_BACKEND_URL}/article?limit=4`
             );
-            const dataArticle = await fetchArticle.json();
+            const articleJson = await fetchArticle.json();
+            console.log(articleJson);
+            if (fetchArticle.status != 200) {
+                return console.log(articleJson);
+            }
+            setArtikelItems(articleJson.data);
         })();
 
         return () => clearInterval(intervalRef.current);
     }, []);
+
+    useEffect(() => {}, []);
 
     const handleClickNegara = (index) => {
         clearInterval(intervalRef.current);
@@ -150,8 +163,12 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="gambar">
-                    <img
+                    {/* <img
                         src="https://images.unsplash.com/photo-1547895749-888a559fc2a7?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt=""
+                    /> */}
+                    <img
+                        src="https://img.ilenafurniture.com/image/1748244474986.jpg/?apikey=a7eabf2178bad12d7d795c6fd4a2e935"
                         alt=""
                     />
                 </div>
@@ -454,7 +471,7 @@ const Home = () => {
                                     }}
                                     className="bg-red-500"
                                 >
-                                    <img
+                                    {/* <img
                                         style={{
                                             position: "absolute",
                                             height: "100%",
@@ -462,6 +479,16 @@ const Home = () => {
                                             objectFit: "cover",
                                         }}
                                         src="https://images.unsplash.com/photo-1534268611302-70c57b990514?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        alt=""
+                                    /> */}
+                                    <img
+                                        style={{
+                                            position: "absolute",
+                                            height: "100%",
+                                            width: "100%",
+                                            objectFit: "cover",
+                                        }}
+                                        src="https://img.ilenafurniture.com/image/1748244560652.jpg/?apikey=a7eabf2178bad12d7d795c6fd4a2e935"
                                         alt=""
                                     />
                                 </div>
