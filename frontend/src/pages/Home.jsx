@@ -233,7 +233,7 @@ const Home = () => {
                         {artikelItems.map((a, ind_a) => (
                             <div key={ind_a} className="item">
                                 <div className="content py-5 px-7">
-                                    <p className="judul">{a.Judul}</p>
+                                    <p className="judul">{a.judul}</p>
                                     <div>
                                         <p className="deskripsi mb-3">
                                             {a.deskripsi}
@@ -725,7 +725,7 @@ const Home = () => {
                             <h1 className="text-white text-center">Clients</h1>
                         </div>
                     </div>
-                    <div
+                    {/* <div
                         className="flex items-center px-7 hidden-scrollbar"
                         style={{
                             gap: window.innerWidth > 700 ? "4em" : "2em",
@@ -770,6 +770,54 @@ const Home = () => {
                                 alt=""
                             />
                         </div>
+                    </div> */}
+                    <div
+                        className="flex justify-center items-center"
+                        style={{
+                            gap: window.innerWidth > 700 ? "4em" : "2em",
+                            flexWrap: "wrap",
+                        }}
+                    >
+                        <img
+                            style={{
+                                width:
+                                    window.innerWidth > 700
+                                        ? "calc(25%)"
+                                        : "calc(50% - 2em)",
+                            }}
+                            src="/img/crate barrel.png"
+                            alt=""
+                        />
+                        <img
+                            style={{
+                                width:
+                                    window.innerWidth > 700
+                                        ? "calc(25%)"
+                                        : "calc(50% - 2em)",
+                            }}
+                            src="/img/the land of nod.png"
+                            alt=""
+                        />
+                        <img
+                            style={{
+                                width:
+                                    window.innerWidth > 700
+                                        ? "calc(25%)"
+                                        : "calc(50% - 2em)",
+                            }}
+                            src="/img/west elm.png"
+                            alt=""
+                        />
+                        <img
+                            style={{
+                                width:
+                                    window.innerWidth > 700
+                                        ? "calc(25%)"
+                                        : "calc(50% - 2em)",
+                            }}
+                            src="/img/william.png"
+                            alt=""
+                        />
                     </div>
                 </div>
             </div>

@@ -15,14 +15,11 @@ const Brand = () => {
                     </div>
                 </div>
                 <div className="gambar">
+                    <img src="/img/cover-brand/header-brand.jpg" alt="" />
                     {/* <img
-                        src="https://images.unsplash.com/photo-1547895749-888a559fc2a7?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt=""
-                    /> */}
-                    <img
                         src="https://img.ilenafurniture.com/image/1748239864605.jpg/?apikey=a7eabf2178bad12d7d795c6fd4a2e935"
                         alt=""
-                    />
+                    /> */}
                 </div>
             </div>
             <div
