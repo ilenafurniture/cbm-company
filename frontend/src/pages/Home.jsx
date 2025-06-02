@@ -192,7 +192,7 @@ const Home = () => {
                         <div>
                             <p>Bersama</p>
                             <div className="flex mt-1 items-center gap-2 text-terang">
-                                <h1>166</h1>
+                                <h1>400</h1>
                                 <FaPlus />
                             </div>
                             <p className="font-bold text-terang">Karyawan</p>
@@ -521,7 +521,7 @@ const Home = () => {
                                 >
                                     Total employees
                                 </p>
-                                <h1>166+</h1>
+                                <h1>400+</h1>
                             </div>
                         </div>
                     </div>
@@ -722,7 +722,7 @@ const Home = () => {
                             >
                                 Our
                             </h3>
-                            <h1 className="text-white text-center">Partners</h1>
+                            <h1 className="text-white text-center">Clients</h1>
                         </div>
                     </div>
                     <div

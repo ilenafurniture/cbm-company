@@ -42,6 +42,7 @@ const Article = () => {
             <Helmet>
                 <title>Article | CV.CBM</title>
             </Helmet>
+
             <div className="header-article-list">
                 <div className="content">
                     <div className="baris-ke-kolom justify-between items-end">
@@ -55,9 +56,11 @@ const Article = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex w-full">
+            <div className="flex w-full" style={{ flex: 1 }}>
                 <div
-                    style={{ width: window.innerWidth < 700 ? "20px" : "50px" }}
+                    style={{
+                        width: window.innerWidth < 700 ? "20px" : "50px",
+                    }}
                     className="bg-terang"
                 ></div>
                 <div
@@ -72,46 +75,50 @@ const Article = () => {
                         style={{ marginTop: "-50px", marginBottom: "30px" }}
                         className="container-article"
                     >
-                        {article
-                            ? article.data.map((item, index) => (
-                                  <Link
-                                      to={`/article/${item.path}`}
-                                      className={`item ${
-                                          index % 2 ? "gelap" : ""
-                                      }`}
-                                      key={index}
-                                  >
-                                      <div className="gambar">
-                                          <img src={item.gambar} alt="" />
-                                      </div>
-                                      <div className="content">
-                                          <div>
-                                              <h3 className="mb-1">
-                                                  {item.judul}
-                                              </h3>
-                                              <div className="deskripsi">
-                                                  <p>{item.deskripsi}</p>
-                                              </div>
-                                          </div>
-                                          <p
-                                              className={`mt-${
-                                                  window.innerWidth > 700
-                                                      ? "3"
-                                                      : "1"
-                                              } text-gray-500`}
-                                          >
-                                              {formatReadableDate(
-                                                  item.updatedAt
-                                              )}
-                                          </p>
-                                      </div>
-                                  </Link>
-                              ))
-                            : "Loading ..."}
+                        {article ? (
+                            article.data.map((item, index) => (
+                                <Link
+                                    to={`/article/${item.path}`}
+                                    className={`item ${
+                                        index % 2 ? "gelap" : ""
+                                    }`}
+                                    key={index}
+                                >
+                                    <div className="gambar">
+                                        <img src={item.gambar} alt="" />
+                                    </div>
+                                    <div className="content">
+                                        <div>
+                                            <h3 className="mb-1">
+                                                {item.judul}
+                                            </h3>
+                                            <div className="deskripsi">
+                                                <p>{item.deskripsi}</p>
+                                            </div>
+                                        </div>
+                                        <p
+                                            className={`mt-${
+                                                window.innerWidth > 700
+                                                    ? "3"
+                                                    : "1"
+                                            } text-gray-500`}
+                                        >
+                                            {formatReadableDate(item.updatedAt)}
+                                        </p>
+                                    </div>
+                                </Link>
+                            ))
+                        ) : (
+                            <div>
+                                <p className="text-white">Loading ..</p>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div
-                    style={{ width: window.innerWidth < 700 ? "20px" : "50px" }}
+                    style={{
+                        width: window.innerWidth < 700 ? "20px" : "50px",
+                    }}
                 ></div>
             </div>
         </>

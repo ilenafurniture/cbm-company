@@ -8,8 +8,10 @@ function App() {
     return (
         <>
             <Navbar />
-            <Outlet />
-            <Footer />
+            <div style={{ minHeight: "100svh" }} className="flex flex-col">
+                <Outlet />
+                <Footer />
+            </div>
         </>
     );
 }
