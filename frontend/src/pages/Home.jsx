@@ -233,7 +233,7 @@ const Home = () => {
                         {artikelItems.map((a, ind_a) => (
                             <div key={ind_a} className="item">
                                 <div className="content py-5 px-7">
-                                    <p className="judul">{a.judul}</p>
+                                    {/* <p className="judul">{a.judul}</p> */}
                                     <div>
                                         <p className="deskripsi mb-3">
                                             {a.deskripsi}
