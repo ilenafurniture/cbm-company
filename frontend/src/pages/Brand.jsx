@@ -57,7 +57,7 @@ const Brand = () => {
             <div
                 className="cover-brand"
                 style={{
-                    backgroundImage: `url(/img/cover-brand/luna.webp)`,
+                    backgroundImage: `url(/img/cover-brand/luna.jpg)`,
                 }}
             >
                 <div className="overlay">
