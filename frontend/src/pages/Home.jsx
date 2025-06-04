@@ -697,7 +697,7 @@ const Home = () => {
                                         width: "100%",
                                         objectFit: "cover",
                                     }}
-                                    src="https://img.ilenafurniture.com/image/1742972542166.png/?apikey=a7eabf2178bad12d7d795c6fd4a2e935"
+                                    src="/img/cover-brand/luna_home.webp"
                                     alt=""
                                 />
                             </Link>
