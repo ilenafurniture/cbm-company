@@ -39,7 +39,7 @@ const read = async (req, res) => {
             filter.tag = { [Op.like]: `%${tag}%` };
         }
         if (kategori) {
-            filter.kategori = kategori;
+            filter.kategori = kategori.replaceAll("-", " ");
         }
         let article, articleAll;
         if (limit) {

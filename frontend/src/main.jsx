@@ -21,6 +21,9 @@ createRoot(document.getElementById("root")).render(
                 <Route path="brand" element={<Brand />} />
                 <Route path="article">
                     <Route index element={<Article />} />
+                    <Route path="category/:category">
+                        <Route index element={<Article />} />
+                    </Route>
                     <Route path=":path" element={<ArticleDetail />} />
                 </Route>
             </Route>
