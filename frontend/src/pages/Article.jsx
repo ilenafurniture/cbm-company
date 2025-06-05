@@ -20,6 +20,7 @@ const Article = () => {
     const [categoryState, setCategoryState] = useState(category);
 
     useEffect(() => {
+        setArticle(null);
         setCategoryState(category);
         (async () => {
             const fetchArticle = await fetch(
@@ -88,7 +89,7 @@ const Article = () => {
                         <div
                             className="bg-white mb-7 rounded-lg hidden-scrollbar"
                             style={{
-                                boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
+                                boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
                                 width: "100%",
                                 display: "block",
                                 position: "relative",
@@ -130,10 +131,10 @@ const Article = () => {
                                                               " ",
                                                               "-"
                                                           ) == categoryState
-                                                        ? "text-amber-500"
+                                                        ? "text-terang"
                                                         : ""
                                                     : c == "Semua"
-                                                    ? "text-amber-500"
+                                                    ? "text-terang"
                                                     : ""
                                             }`}
                                             style={{
@@ -195,7 +196,7 @@ const Article = () => {
                                 ))
                             ) : (
                                 <div>
-                                    <p className="text-white">Loading ..</p>
+                                    <p className="text-terang">Loading ..</p>
                                 </div>
                             )}
                         </div>
