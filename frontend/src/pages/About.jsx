@@ -61,7 +61,7 @@ const About = () => {
                         upaya untuk terus menjaga kualitas produk furniture.
                     </p>
                     <p>
-                        Bersama 166 karyawan, kami berkomitmen untuk terus
+                        Bersama 400 karyawan, kami berkomitmen untuk terus
                         bertumbuh dan berkembang menjadi perusahaan manufaktur
                         yang menyediakan furniture serta layanan terbaik bagi
                         konsumen. Kepercayaan kami untuk terus bergerak menjadi
