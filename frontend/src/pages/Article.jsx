@@ -6,7 +6,7 @@ const categoriesItem = ["Semua", "Rekomendasi", "Tips & Trik", "Edukasi", "Fun F
 const PAGE_SIZE = 8;
 
 const Article = () => {
-  const { category } = useParams(); // slug kategori
+  const { category } = useParams(); 
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [items, setItems] = useState([]);
@@ -19,7 +19,6 @@ const Article = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
 
-  // reset page saat kategori berubah
   useEffect(() => {
     setCategoryState(category || null);
     setCurrentPage(1);
@@ -30,7 +29,6 @@ const Article = () => {
     });
   }, [category, setSearchParams]);
 
-  // sinkron page ke URL (?page=)
   useEffect(() => {
     setSearchParams((prev) => {
       const p = new URLSearchParams(prev);
@@ -44,7 +42,7 @@ const Article = () => {
       setLoading(true);
       try {
         const qs = new URLSearchParams();
-        if (category) qs.set("kategori", category); // backend handle replaceAll("-", " ")
+        if (category) qs.set("kategori", category);
         qs.set("pag", String(currentPage));
         qs.set("limit", String(PAGE_SIZE));
 
@@ -85,7 +83,6 @@ const Article = () => {
     setCurrentPage(page);
   };
 
-  // nomor halaman ringkas
   const pageNumbers = useMemo(() => {
     const pages = [];
     const maxShown = 5;
@@ -96,7 +93,6 @@ const Article = () => {
     return { pages, start, end };
   }, [currentPage, totalPages]);
 
-  // skeleton 8 kartu
   const skeletons = Array.from({ length: PAGE_SIZE });
 
   return (
@@ -105,7 +101,6 @@ const Article = () => {
         <title>Article | CV.CBM</title>
       </Helmet>
 
-      {/* Header */}
       <div className="header-article-list">
         <div className="content container1">
           <div className="baris-ke-kolom justify-between items-end" style={{ gap: 16 }}>
@@ -118,9 +113,7 @@ const Article = () => {
         </div>
       </div>
 
-      {/* Body */}
       <div className="container1" style={{ paddingBlock: "30px" }}>
-        {/* Tabs kategori */}
         <div
           className="bg-white mb-7 rounded-lg hidden-scrollbar tabs-kategori"
           style={{ boxShadow: "0 0 10px rgba(0,0,0,.08)" }}
@@ -144,7 +137,6 @@ const Article = () => {
           </div>
         </div>
 
-        {/* Grid artikel / Skeleton */}
         <div className="container-article">
           {loading
             ? skeletons.map((_, i) => (
@@ -191,8 +183,6 @@ const Article = () => {
                 </Link>
               ))}
         </div>
-
-        {/* Pagination */}
         <div
           style={{
             marginTop: "24px",
