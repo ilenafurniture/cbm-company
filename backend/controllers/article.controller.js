@@ -57,7 +57,13 @@ const read = async (req, res) => {
       where,
       limit,
       offset,
-      order: [["createdAt", "DESC"]],
+      // urutan deterministik: jika createdAt sama, pakai id sebagai tie-breaker
+      order: [
+        ["createdAt", "DESC"],
+        ["id", "DESC"],
+      ],
+      distinct: true,
+      subQuery: false,
     });
 
     const data = rows.map((a) => {
@@ -75,6 +81,24 @@ const read = async (req, res) => {
 
     const totalItems = count;
     const totalPages = Math.max(1, Math.ceil(totalItems / limit));
+
+    // Matikan cache supaya page 2/3 tidak “ke-cache”
+    res.set("Cache-Control", "no-store");
+    res.set("Pragma", "no-cache");
+    res.set("Expires", "0");
+
+    console.log(
+      "[/article] query=",
+      req.query,
+      "=> pag:",
+      pag,
+      "limit:",
+      limit,
+      "offset:",
+      offset,
+      "count:",
+      totalItems
+    );
 
     return res.status(200).json({
       data,
@@ -125,7 +149,12 @@ const readAdmin = async (req, res) => {
       where,
       limit,
       offset,
-      order: [["createdAt", "DESC"]],
+      order: [
+        ["createdAt", "DESC"],
+        ["id", "DESC"],
+      ],
+      distinct: true,
+      subQuery: false,
     });
 
     const data = rows.map((a) => {
@@ -143,6 +172,24 @@ const readAdmin = async (req, res) => {
 
     const totalItems = count;
     const totalPages = Math.max(1, Math.ceil(totalItems / limit));
+
+    // Matikan cache untuk admin juga
+    res.set("Cache-Control", "no-store");
+    res.set("Pragma", "no-cache");
+    res.set("Expires", "0");
+
+    console.log(
+      "[/article/admin] query=",
+      req.query,
+      "=> pag:",
+      pag,
+      "limit:",
+      limit,
+      "offset:",
+      offset,
+      "count:",
+      totalItems
+    );
 
     return res.status(200).json({
       data,
