@@ -1266,3 +1266,146 @@ footer {
         background-position: 0px 0px;
     }
 }
+
+/* ---------- Tabs Kategori (rapi, responsif) ---------- */
+.tabs-kategori {
+  width: 100%;
+  position: relative;
+  overflow-x: auto;
+  height: 52px;
+  border-radius: 10px;
+
+  &__inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-inline: 16px;
+    min-width: max-content;
+  }
+
+  .tab-item {
+    display: inline-flex;
+    align-items: center;
+    height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .3px;
+    color: var(--gelap);
+    border: 1px solid rgba(0,0,0,.08);
+    background: #fff;
+    transition: .2s;
+    white-space: nowrap;
+
+    &:hover { background: #fafafa; }
+    &.active {
+      background: var(--terang);
+      color: #fff;
+      border-color: var(--terang);
+      box-shadow: 0 6px 16px rgba(0,0,0,.08);
+    }
+  }
+}
+
+/* ---------- Skeleton loader untuk kartu artikel ---------- */
+.skeleton-card {
+  .skeleton-rect,
+  .skeleton-line {
+    position: relative;
+    overflow: hidden;
+    background: #f2f3f4;
+    border-radius: 6px;
+  }
+
+  .skeleton-rect { height: 150px; }
+  @media (max-width: 700px) {
+    .skeleton-rect { height: 100px; }
+  }
+
+  .skeleton-line {
+    height: 10px;
+  }
+
+  .skeleton-rect::after,
+  .skeleton-line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.7) 50%, rgba(255,255,255,0) 100%);
+    animation: shimmer 1.2s infinite;
+  }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* ---------- Pagination: polishing ---------- */
+.pagination {
+  gap: 6px;
+
+  .item {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 999px;
+    background: #fff;
+    cursor: pointer;
+    user-select: none;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background: #fafafa;
+      color: var(--ungu);
+      font-weight: 500;
+    }
+
+    &.active {
+      background: var(--ungu);
+      color: #fff;
+      border-color: var(--ungu);
+      width: 30px;
+      height: 30px;
+      font-weight: 600;
+    }
+
+    &.disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+
+    &.dots {
+      border: none;
+      width: auto;
+      padding: 0 6px;
+      background: transparent;
+      cursor: default;
+    }
+  }
+}
+
+/* ---------- Kartu artikel: kecilkan hover jump biar halus ---------- */
+.container-article {
+  .item {
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,.06);
+      border-color: rgba(0,0,0,.09);
+    }
+
+    .gambar { transition: height .2s ease; }
+    .deskripsi { transition: max-height .2s ease; }
+  }
+}

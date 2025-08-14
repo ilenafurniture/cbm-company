@@ -6,7 +6,7 @@ const categoriesItem = ["Semua", "Rekomendasi", "Tips & Trik", "Edukasi", "Fun F
 const PAGE_SIZE = 8;
 
 const Article = () => {
-  const { category } = useParams(); // slug kategori (mis: "tips-&-trik")
+  const { category } = useParams(); // slug kategori
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [items, setItems] = useState([]);
@@ -19,8 +19,8 @@ const Article = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
 
+  // reset page saat kategori berubah
   useEffect(() => {
-    // jika kategori berubah, reset page ke 1
     setCategoryState(category || null);
     setCurrentPage(1);
     setSearchParams((prev) => {
@@ -30,8 +30,8 @@ const Article = () => {
     });
   }, [category, setSearchParams]);
 
+  // sinkron page ke URL (?page=)
   useEffect(() => {
-    // sinkron page ke URL
     setSearchParams((prev) => {
       const p = new URLSearchParams(prev);
       p.set("page", String(currentPage));
@@ -44,7 +44,7 @@ const Article = () => {
       setLoading(true);
       try {
         const qs = new URLSearchParams();
-        if (category) qs.set("kategori", category); // backend akan replaceAll("-", " ")
+        if (category) qs.set("kategori", category); // backend handle replaceAll("-", " ")
         qs.set("pag", String(currentPage));
         qs.set("limit", String(PAGE_SIZE));
 
@@ -96,210 +96,181 @@ const Article = () => {
     return { pages, start, end };
   }, [currentPage, totalPages]);
 
+  // skeleton 8 kartu
+  const skeletons = Array.from({ length: PAGE_SIZE });
+
   return (
     <>
       <Helmet>
         <title>Article | CV.CBM</title>
       </Helmet>
 
+      {/* Header */}
       <div className="header-article-list">
-        <div className="content">
-          <div className="baris-ke-kolom justify-between items-end">
+        <div className="content container1">
+          <div className="baris-ke-kolom justify-between items-end" style={{ gap: 16 }}>
             <p className="judul">Our Releases</p>
             <div>
               <h3>Inspirasi</h3>
-              <p style={{ maxWidth: "140px" }}>Kumpulan informasi terbaru dan seru</p>
+              <p style={{ maxWidth: 260 }}>Kumpulan informasi terbaru dan seru</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex w-full" style={{ flex: 1 }}>
+      {/* Body */}
+      <div className="container1" style={{ paddingBlock: "30px" }}>
+        {/* Tabs kategori */}
         <div
-          style={{ width: window.innerWidth < 700 ? "20px" : "50px" }}
-          className="bg-terang"
-        ></div>
-
-        <div
-          style={{
-            flex: 1,
-            paddingInline: window.innerWidth < 700 ? "20px" : "50px",
-          }}
-          className="bg-white"
+          className="bg-white mb-7 rounded-lg hidden-scrollbar tabs-kategori"
+          style={{ boxShadow: "0 0 10px rgba(0,0,0,.08)" }}
         >
-          <div style={{ marginTop: "-25px", marginBottom: "30px" }}>
-            {/* Tabs kategori */}
-            <div
-              className="bg-white mb-7 rounded-lg hidden-scrollbar"
-              style={{
-                boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
-                width: "100%",
-                display: "block",
-                position: "relative",
-                overflowX: "auto",
-                height: "50px",
-              }}
-            >
-              <div
-                className="flex gap-7 justify-center items-center px-8"
-                style={{
-                  width: "100%",
-                  minWidth: "fit-content",
-                  position: "absolute",
-                  height: "100%",
-                }}
-              >
-                {categoriesItem.map((c, ind_c) => {
-                  const slug = c.toLowerCase().replaceAll(" ", "-");
-                  const isActive = categoryState ? slug === categoryState : c === "Semua";
-                  return (
-                    <Link
-                      to={c === "Semua" ? "/article" : `/article/category/${slug}`}
-                      key={ind_c}
-                      style={{ display: "block", textWrap: "nowrap" }}
-                      className="hover:text-amber-700"
-                    >
-                      <p
-                        className={`hover:text-amber-700 ${isActive ? "text-terang" : ""}`}
-                        style={{ fontWeight: isActive ? "bold" : "" }}
-                      >
-                        {c}
-                      </p>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Grid artikel */}
-            <div className="container-article">
-              {loading ? (
-                <div>
-                  <p className="text-terang">Loading ..</p>
-                </div>
-              ) : items.length === 0 ? (
-                <div>
-                  <p className="text-gray-600">Belum ada artikel.</p>
-                </div>
-              ) : (
-                <>
-                  {items.map((item, index) => (
-                    <Link
-                      to={`/article/${item.path}`}
-                      className={`item ${index % 2 ? "gelap" : ""}`}
-                      key={item.id || item.path || index}
-                    >
-                      <div className="gambar">
-                        <img src={item.gambar} alt={item.judul || "thumbnail"} />
-                      </div>
-                      <div className="content">
-                        <div>
-                          <h3 className="mb-1">{item.judul}</h3>
-                          <div className="deskripsi">
-                            <p>{item.deskripsi}</p>
-                          </div>
-                        </div>
-                        <p
-                          className={`mt-${window.innerWidth > 700 ? "3" : "1"} text-gray-500`}
-                        >
-                          {formatReadableDate(item.updatedAt || item.createdAt)}
-                        </p>
-                      </div>
-                    </Link>
-                  ))}
-
-                  {/* Pagination */}
-                  <div className="mt-6 flex items-center justify-center gap-2 select-none">
-                    <button
-                      onClick={() => goToPage(1)}
-                      disabled={currentPage === 1}
-                      className={`px-3 py-2 rounded border ${
-                        currentPage === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-100"
-                      }`}
-                    >
-                      « First
-                    </button>
-                    <button
-                      onClick={() => goToPage(currentPage - 1)}
-                      disabled={currentPage === 1}
-                      className={`px-3 py-2 rounded border ${
-                        currentPage === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-100"
-                      }`}
-                    >
-                      ‹ Prev
-                    </button>
-
-                    {pageNumbers.pages[0] > 1 && (
-                      <>
-                        <button
-                          className="px-3 py-2 rounded border hover:bg-gray-100"
-                          onClick={() => goToPage(1)}
-                        >
-                          1
-                        </button>
-                        <span className="px-1">…</span>
-                      </>
-                    )}
-
-                    {pageNumbers.pages.map((p) => (
-                      <button
-                        key={p}
-                        onClick={() => goToPage(p)}
-                        className={`px-3 py-2 rounded border ${
-                          p === currentPage ? "bg-terang text-white border-terang" : "hover:bg-gray-100"
-                        }`}
-                      >
-                        {p}
-                      </button>
-                    ))}
-
-                    {pageNumbers.pages.at(-1) < totalPages && (
-                      <>
-                        <span className="px-1">…</span>
-                        <button
-                          className="px-3 py-2 rounded border hover:bg-gray-100"
-                          onClick={() => goToPage(totalPages)}
-                        >
-                          {totalPages}
-                        </button>
-                      </>
-                    )}
-
-                    <button
-                      onClick={() => goToPage(currentPage + 1)}
-                      disabled={currentPage === totalPages}
-                      className={`px-3 py-2 rounded border ${
-                        currentPage === totalPages
-                          ? "opacity-50 cursor-not-allowed"
-                          : "hover:bg-gray-100"
-                      }`}
-                    >
-                      Next ›
-                    </button>
-                    <button
-                      onClick={() => goToPage(totalPages)}
-                      disabled={currentPage === totalPages}
-                      className={`px-3 py-2 rounded border ${
-                        currentPage === totalPages
-                          ? "opacity-50 cursor-not-allowed"
-                          : "hover:bg-gray-100"
-                      }`}
-                    >
-                      Last »
-                    </button>
-                  </div>
-
-                  <p className="text-center text-sm text-gray-500 mt-2">
-                    Menampilkan {(currentPage - 1) * PAGE_SIZE + 1}–
-                    {Math.min(currentPage * PAGE_SIZE, totalItems)} dari {totalItems} artikel
-                  </p>
-                </>
-              )}
-            </div>
+          <div className="tabs-kategori__inner">
+            {categoriesItem.map((c, ind) => {
+              const slug = c.toLowerCase().replaceAll(" ", "-");
+              const isActive = categoryState ? slug === categoryState : c === "Semua";
+              const to = c === "Semua" ? "/article" : `/article/category/${slug}`;
+              return (
+                <Link
+                  key={ind}
+                  to={to}
+                  className={`tab-item ${isActive ? "active" : ""}`}
+                  title={c}
+                >
+                  {c}
+                </Link>
+              );
+            })}
           </div>
         </div>
 
-        <div style={{ width: window.innerWidth < 700 ? "20px" : "50px" }}></div>
+        {/* Grid artikel / Skeleton */}
+        <div className="container-article">
+          {loading
+            ? skeletons.map((_, i) => (
+                <div className="item skeleton-card" key={`sk-${i}`}>
+                  <div className="gambar skeleton-rect" />
+                  <div className="content">
+                    <div>
+                      <div className="skeleton-line" style={{ width: "70%" }} />
+                      <div className="skeleton-line" style={{ width: "95%", marginTop: 8 }} />
+                      <div className="skeleton-line" style={{ width: "85%", marginTop: 6 }} />
+                    </div>
+                    <div className="skeleton-line" style={{ width: "40%", marginTop: 10 }} />
+                  </div>
+                </div>
+              ))
+            : items.length === 0
+            ? (
+              <div className="item" style={{ gridColumn: "1 / -1", padding: "2em" }}>
+                <p className="text-gray-600">Belum ada artikel.</p>
+              </div>
+            )
+            : items.map((item, index) => (
+                <Link
+                  to={`/article/${item.path}`}
+                  className={`item ${index % 2 ? "gelap" : ""}`}
+                  key={item.id || item.path || index}
+                >
+                  <div className="gambar">
+                    <img src={item.gambar} alt={item.judul || "thumbnail"} />
+                  </div>
+                  <div className="content">
+                    <div>
+                      <h3 className="mb-1" title={item.judul}>
+                        {item.judul}
+                      </h3>
+                      <div className="deskripsi">
+                        <p>{item.deskripsi}</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-500">
+                      {formatReadableDate(item.updatedAt || item.createdAt)}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+        </div>
+
+        {/* Pagination */}
+        <div
+          style={{
+            marginTop: "24px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 12,
+            flexWrap: "wrap",
+          }}
+        >
+          <p className="text-gray-500" style={{ fontSize: 12 }}>
+            Menampilkan {(currentPage - 1) * PAGE_SIZE + 1}–
+            {Math.min(currentPage * PAGE_SIZE, totalItems)} dari {totalItems} artikel
+          </p>
+
+          <nav className="pagination" aria-label="Pagination">
+            <button
+              onClick={() => goToPage(1)}
+              disabled={currentPage === 1}
+              className={`item ${currentPage === 1 ? "disabled" : ""}`}
+              title="Halaman pertama"
+            >
+              «
+            </button>
+            <button
+              onClick={() => goToPage(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`item ${currentPage === 1 ? "disabled" : ""}`}
+              title="Sebelumnya"
+            >
+              ‹
+            </button>
+
+            {pageNumbers.pages[0] > 1 && (
+              <>
+                <button onClick={() => goToPage(1)} className="item">1</button>
+                <span className="item dots">…</span>
+              </>
+            )}
+
+            {pageNumbers.pages.map((p) => (
+              <button
+                key={p}
+                onClick={() => goToPage(p)}
+                className={`item ${p === currentPage ? "active" : ""}`}
+                aria-current={p === currentPage ? "page" : undefined}
+              >
+                {p}
+              </button>
+            ))}
+
+            {pageNumbers.pages.at(-1) < totalPages && (
+              <>
+                <span className="item dots">…</span>
+                <button onClick={() => goToPage(totalPages)} className="item">
+                  {totalPages}
+                </button>
+              </>
+            )}
+
+            <button
+              onClick={() => goToPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`item ${currentPage === totalPages ? "disabled" : ""}`}
+              title="Berikutnya"
+            >
+              ›
+            </button>
+            <button
+              onClick={() => goToPage(totalPages)}
+              disabled={currentPage === totalPages}
+              className={`item ${currentPage === totalPages ? "disabled" : ""}`}
+              title="Halaman terakhir"
+            >
+              »
+            </button>
+          </nav>
+        </div>
       </div>
     </>
   );
